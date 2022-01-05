@@ -1,0 +1,22 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "title": "Desenvolvimento de aplicativo",
+      "amount": 7000,
+      "type": "income"
+    },
+    {
+      "id": 2,
+      "title": "Burro do Shrek",
+      "amount": 3000,
+      "type": "outcome"
+    },
+    {
+      "id": 3,
+      "title": "Compra do mês",
+      "amount": 1000,
+      "type": "outcome"
+    }
+  ]
+}
