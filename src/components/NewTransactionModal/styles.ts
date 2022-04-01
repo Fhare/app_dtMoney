@@ -4,14 +4,19 @@ import colors from "../../styles/colors";
 
 export const styles = StyleSheet.create({
   container: {
-    padding: 15,
-    marginTop: 20,
-  },
-
-  topBarModal: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between"
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    alignItems: "center",
+    justifyContent: "flex-end",
+  },
+  
+  content: {
+    backgroundColor: colors.white_100,
+    marginBottom: 10,
+    paddingVertical: 30,
+    paddingHorizontal: 20,
+    borderRadius: 14,
+    width: "95%",
   },
 
   heading: {
@@ -26,8 +31,7 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: colors.white_300,
     borderRadius: 5,
-    padding: 10,
-    paddingVertical: 18,
+    padding: 16,
     marginBottom: 10,
     backgroundColor: colors.white_300,
     fontSize: 18,
@@ -35,7 +39,6 @@ export const styles = StyleSheet.create({
   },
 
   buttonsContainer: {
-    flex: 1,
     flexDirection: "row",
     justifyContent: "center",
     marginBottom: 10
@@ -44,7 +47,7 @@ export const styles = StyleSheet.create({
   typeBtn: {
     flex: 1,
     backgroundColor: colors.white_300,
-    padding: 18,
+    padding: 16,
     borderRadius: 5,
     flexDirection: "row",
     alignItems: "center",
@@ -58,14 +61,13 @@ export const styles = StyleSheet.create({
   },
 
   registerBtn: {
-    flex: 1,
     backgroundColor: colors.income,
     padding: 20,
     borderRadius: 5,
   },
 
   textBtn: {
-    fontSize: 21,
+    fontSize: 18,
     color: colors.white_100,
     fontWeight: "bold",
     alignSelf: "center"

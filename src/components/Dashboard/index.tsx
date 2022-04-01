@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView } from "react-native";
+import { View } from "react-native";
 
 import { Summary } from "../Summary";
 
@@ -7,14 +7,8 @@ import { styles } from "./styles";
 
 export function Dashboard() {
   return (
-    <ScrollView
-      style={styles.container}
-      horizontal={true}
-      showsHorizontalScrollIndicator={false}
-    >
+    <View style={styles.container} >
       <Summary />
-      <Summary />
-      <Summary />
-    </ScrollView>
+    </View>
   );
 };

@@ -4,11 +4,12 @@ import colors from "../../styles/colors";
 
 export const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 14,
+    width: "90%",
+    height: 150,
     backgroundColor: colors.white_100,
-    width: 300,
-    height: 200,
-    borderRadius: 8,
     padding: 20,
   },
 
@@ -24,7 +25,8 @@ export const styles = StyleSheet.create({
   },
 
   price: {
-    fontSize: 30,
+    fontSize: 38,
+    marginBottom: 4,
     fontWeight: "bold",
     color: colors.gray_500
   },

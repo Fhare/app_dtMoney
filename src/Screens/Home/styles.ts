@@ -14,6 +14,12 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.purple_500
   },
 
+  logo: {
+    fontSize: 34,
+    fontWeight: "bold",
+    color: colors.white_150
+  },
+
   title: {
     fontSize: 18,
     fontWeight: "bold",

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
   View,
@@ -7,59 +7,25 @@ import {
   ScrollView,
 } from "react-native";
 
-import { api } from "../../services/api";
-
 import { TransactionCard } from "../../components/TransactionCard";
 import { Dashboard } from "../../components/Dashboard";
-
 import { NewTransactionModal } from "../../components/NewTransactionModal";
-
-import { Modalize } from "react-native-modalize"; 
-
-import Logo from "../../assets/logo.svg";
 
 import { styles } from "./styles";
 
-type TransactionsProps = {
-  id: number;
-  title: string;
-  amount: number;
-  type: string;
-};
-
 export function Home() {
 
-  const openModalRef = useRef<Modalize>(null);
-
-  const [transactions, setTransactions] = useState<TransactionsProps[]>([]);
-
-  const handleOpenModal = () => {
-    openModalRef.current?.open();
-  };
-
-  async function getTransactions() {
-    try {
-      const { data } = await api.get("/transactions");
-
-      console.log(data);
-    } catch(err) {
-      console.log(`Algo deu errado ai carinha, ${err}`);
-    };
-  };
-
-  useEffect(() => {
-    getTransactions();
-  }, [])
+  const [modalVisibility, setModalVisibility] = useState(false);
 
   return (
     <>
       <ScrollView>
         <View style={styles.container}>
-          <Logo />
+          <Text style={styles.logo}>Ynvest 💰</Text>
 
           <TouchableOpacity
             style={styles.button}
-            onPress={handleOpenModal}
+            onPress={() => setModalVisibility(true)}
           >
             <Text style={styles.buttonTitle}>Nova transação</Text>
           </TouchableOpacity>
@@ -74,18 +40,13 @@ export function Home() {
           </View>
 
           <TransactionCard />
-          <TransactionCard />
-          <TransactionCard />
-          <TransactionCard />
         </View>
       </ScrollView>
 
-      <Modalize
-        ref={openModalRef}
-        modalHeight={500}
-      >
-        <NewTransactionModal />
-      </Modalize>
+      <NewTransactionModal
+        isVisible={modalVisibility}
+        setIsVisible={setModalVisibility}
+      />
     </>
   );
 };
