@@ -3,14 +3,20 @@ import { View, Text } from "react-native";
 
 import { styles } from "./styles";
 
-export function TransactionCard() {
+interface TransactionCardProps {
+  title: string;
+  amount: number;
+  type: string;
+}
+
+export function TransactionCard({ title, amount, type }: TransactionCardProps) {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Desenvolvimento de site</Text>
-      <Text style={styles.amount}>R$ 12.000,00</Text>
+      <Text style={styles.heading}>{title}</Text>
+      <Text style={styles.amount}>{amount}</Text>
 
       <View style={styles.categoryAndDate}>
-        <Text style={styles.category}>Vendas</Text>
+        <Text style={styles.category}>{type}</Text>
         <Text style={styles.date}>13/04/2021</Text>
       </View>
     </View>

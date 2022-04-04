@@ -11,17 +11,21 @@ import { TransactionCard } from "../../components/TransactionCard";
 import { Dashboard } from "../../components/Dashboard";
 import { NewTransactionModal } from "../../components/NewTransactionModal";
 
+import { useTransaction } from "../../hooks/useTransaction";
+
 import { styles } from "./styles";
 
 export function Home() {
 
   const [modalVisibility, setModalVisibility] = useState(false);
 
+  const { transactions } = useTransaction();
+
   return (
     <>
       <ScrollView>
         <View style={styles.container}>
-          <Text style={styles.logo}>Ynvest 💰</Text>
+          <Text style={styles.logo}>MetaInvest</Text>
 
           <TouchableOpacity
             style={styles.button}
@@ -36,10 +40,21 @@ export function Home() {
         <View style={styles.cardContainer}>
           <View style={styles.itens}>
             <Text style={styles.heading}>Listagem</Text>
-            <Text style={styles.amount}>4 Itens</Text>
+            <Text style={styles.amount}>{transactions.length} Itens</Text>
           </View>
 
-          <TransactionCard />
+          {
+            transactions.map(transaction => {
+              return (
+                <TransactionCard 
+                  key={transaction.id}
+                  title={transaction.title}
+                  amount={transaction.amount}
+                  type={transaction.type}
+                />
+              )
+            })
+          }
         </View>
       </ScrollView>
 

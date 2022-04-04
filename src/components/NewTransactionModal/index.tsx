@@ -12,7 +12,7 @@ interface TransactionModalProps {
 
 export function NewTransactionModal({ isVisible, setIsVisible }: TransactionModalProps) {
 
-  const { transaction, setName, setPrice, addNewTransaction } = useTransaction();
+  const { setName, setPrice, addNewTransaction, setType } = useTransaction();
 
   return (
     <Modal
@@ -38,30 +38,18 @@ export function NewTransactionModal({ isVisible, setIsVisible }: TransactionModa
               style={styles.input}
             />
 
-            {/* <View style={styles.buttonsContainer}>
-              <TouchableOpacity
-                style={[styles.typeBtn, { marginRight: 10 }]}
-              >
-                <Income />
-                <Text style={styles.typeText}>Income</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={styles.typeBtn}
-              >
-                <Outcome />
-                <Text style={styles.typeText}>Outcome</Text>
-              </TouchableOpacity>
-            </View> */}
-
-            {/* <TextInput
+            <TextInput
               placeholder="Categoria"
+              onChangeText={value => setType(value)}
               style={styles.input}
-            /> */}
+            />
 
             <TouchableOpacity
               style={styles.registerBtn}
-              onPress={() => addNewTransaction()}
+              onPress={() => {
+                addNewTransaction();
+                setIsVisible(false);
+              }}
             >
               <Text style={styles.textBtn}>Cadastrar</Text>
             </TouchableOpacity>

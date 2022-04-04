@@ -8,16 +8,18 @@ type TransactionsProps = {
   id: number;
   title: string;
   amount: number;
-  type?: string;
+  type: string;
 };
 
 interface NewTrasactionType {
   name: string;
   price: string;
-  transaction: TransactionsProps | undefined;
+  type: string;
+  transactions: TransactionsProps[];
   setName: (name: string) => void;
   setPrice: (price: string) => void;
-  setTransacion: (transaction: TransactionsProps) => void;
+  setType: (type: string) => void;
+  setTransacions: (transaction: TransactionsProps[]) => void;
   addNewTransaction: () => void;
 }
 
@@ -27,7 +29,8 @@ export function NewTransactionProvider({ children }: NewTransactionProviderProps
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [transaction, setTransacion] = useState<TransactionsProps>();
+  const [type, setType] = useState("");
+  const [transactions, setTransacions] = useState<TransactionsProps[]>([]);
 
   function addNewTransaction() {
     const convertedPrice = parseInt(price);
@@ -35,10 +38,11 @@ export function NewTransactionProvider({ children }: NewTransactionProviderProps
     const newTransaction = {
       id: Math.random(),
       title: name,
-      amount: convertedPrice
+      amount: convertedPrice,
+      type
     }
 
-    setTransacion(newTransaction);
+    setTransacions([...transactions, newTransaction]);
   }
 
   return (
@@ -47,8 +51,10 @@ export function NewTransactionProvider({ children }: NewTransactionProviderProps
       setName,
       price,
       setPrice,
-      transaction,
-      setTransacion,
+      type,
+      setType,
+      transactions,
+      setTransacions,
       addNewTransaction
      }}>
       {children}
